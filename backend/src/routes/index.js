@@ -1,6 +1,10 @@
-const routes = {
-    produtsRouter: require('./products.router'),
-    categoriesRouter: rquiere('./categories.router')
-}
+let router = require('express').Router();
 
-module.exports = routes
+const bodyParser = require('body-parser');
+router.use(bodyParser.urlencoded({ extended: true }))
+router.use(bodyParser.json())
+
+router.use('/products', require('./products.router'))
+router.use('/categories', require('./categories.router'))
+
+module.exports = router;

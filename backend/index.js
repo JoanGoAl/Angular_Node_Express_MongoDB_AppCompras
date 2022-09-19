@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const app = express();
 const port = 3000;
 
-require('./src/routes/')(app)
+app.use(require('./src/routes'))
 
 mongoose.connect('mongodb://localhost:27017/appCompras', {
     useNewUrlParser: true,

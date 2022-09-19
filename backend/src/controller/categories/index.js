@@ -4,7 +4,7 @@ exports.getCategories = async (req, res) => {
     let item
 
     try {
-        item = await productController.getCategories()
+        item = await categoriesController.getCategories()
     } catch (error) {
         item = error
     }
@@ -16,7 +16,7 @@ exports.getById = async (req, res) => {
     let item
 
     try {
-        item = await productController.getById(req.params.id)
+        item = await categoriesController.getById(req.params.id)
     } catch (error) {
         item = error
     }
@@ -27,8 +27,10 @@ exports.getById = async (req, res) => {
 exports.addCategory = async (req, res) => {
     let item
 
+    console.log(req);
+
     try {
-        item = await productController.addCategory(req.body)
+        item = await categoriesController.addCategory(req.body)
     } catch (error) {
         item = error
     }
@@ -40,7 +42,7 @@ exports.deleteCategory = async (req, res) => {
     let item
 
     try {
-        item = await productController.deleteCategory(req.params.id)
+        item = await categoriesController.deleteCategory(req.params.id)
     } catch (error) {
         item = error
     }
@@ -53,7 +55,7 @@ exports.updateCategory = async (req, res) => {
     let item
 
     try {
-        item = await productController.updateCategory({ id: req.params.id, data: req.body })
+        item = await categoriesController.updateCategory({ id: req.params.id, data: req.body })
     } catch (error) {
         item = error
     }
