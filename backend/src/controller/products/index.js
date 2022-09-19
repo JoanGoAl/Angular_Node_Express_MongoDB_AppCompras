@@ -24,7 +24,6 @@ exports.addProduct = async (req, res) => {
     res.send(item)
 }
 
-
 exports.deleteProduct = async (req, res) => {
     let item
 
