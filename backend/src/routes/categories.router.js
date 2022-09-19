@@ -1,18 +1,14 @@
-module.exports = (app) => {
-    const bodyParser = require('body-parser');
-    app.use(bodyParser.urlencoded({ extended: true }))
-    app.use(bodyParser.json())
+let router = require('express').Router();
+const { categoriesController } = require('../controller/index')
 
-    const { categoriesController } = require('../controller/index')
+router.get('/allcategories', categoriesController.getCategories)
 
-    // Routes
-    app.get('/allcategories', categoriesController.getCategories)
+router.get('/category/:id', categoriesController.getById)
 
-    app.get('/category/:id', categoriesController.getById)
+router.post('/addcategory', categoriesController.addCategory)
 
-    app.post('/addcategory', categoriesController.addCategory)
+router.delete('/deletecategory/:id', categoriesController.deleteCategory)
 
-    app.delete('/deletecategory/:id', categoriesController.deleteCategory)
+router.put('/updatecategory/:id', categoriesController.updateCategory)
 
-    app.put('/updatecategory/:id', categoriesController.updateCategory)
-}
+module.exports = router;
