@@ -8,33 +8,40 @@ import { Product } from 'src/app/models';
   styleUrls: ['./details-product.component.css']
 })
 export class DetailsProductComponent implements OnInit {
+  product: Product = {
+    _id: "56789",
+    title: "Moises",
+    category: "Farlopa",
+    content: "A"
+  };
+
+  val!: Product;
 
   constructor(private dialog: MatDialog) { }
 
   openDialog() {
-    const dialogConfig = new MatDialogConfig();
+    const dialogRef = this.dialog.open(ProductDialog, {
+      width: '50%',
+      height: '50%',
+      data: {
+        _id: this.product._id,
+        title: this.product.title
+      },
+    });
 
-    dialogConfig.disableClose = false;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = '50%';
-    dialogConfig.height = "50%";
-
-    this.dialog.open(ProductDialog, dialogConfig);
+    dialogRef.afterClosed().subscribe(res => {
+      console.log('The dialog was closed');
+      this.val = res;
+    });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
 }
 
 @Component({
   selector: 'product-dialaog',
-  template: `
-      <h1 mat-dialog-title>Hi Moises</h1>
-      <div mat-dialog-content>
-        <p>¿Como Estás?</p>
-      </div>
-    `,
+  templateUrl: './product-dialog.html',
   styleUrls: []
 })
 export class ProductDialog {
