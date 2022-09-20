@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort, Sort } from '@angular/material/sort';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatSort, MatSortModule, Sort } from '@angular/material/sort';
 import { Product } from 'src/app/models';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { ProductService } from 'src/app/services';
+
 
 const ELEMENT_DATA: Product[] = [
   {
@@ -53,7 +55,7 @@ export class ListProductsComponent implements AfterViewInit {
   displayedColums: String[] = ['id', 'name', 'content', 'category']
   dataSource = new MatTableDataSource<Product>(ELEMENT_DATA);
 
-  constructor(private _liveAnnouncer: LiveAnnouncer) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer, private _productService: ProductService) { }
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -64,6 +66,9 @@ export class ListProductsComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    console.log(this._productService.allProducts().subscribe((e) => e));
+
   }
 
   announceSortChange(sortState: Sort) {

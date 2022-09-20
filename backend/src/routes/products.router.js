@@ -1,23 +1,3 @@
-<<<<<<< HEAD
-module.exports = (app) => {
-    const bodyParser = require('body-parser');
-    app.use(bodyParser.urlencoded({ extended: true }))
-    app.use(bodyParser.json())
-
-    const { productController } = require('../controller/index')
-
-    // Routes
-    app.get('/allproducts', productController.getProducts)
-
-    app.get('/product/:id', productController.getById)
-
-    app.post('/addproduct', productController.addProduct)
-
-    app.delete('/deleteproduct/:id', productController.deleteProduct)
-
-    app.put('/updateproduct/:id', productController.updateProduct)
-}
-=======
 let router = require('express').Router();
 const { productController } = require('../controller/index')
 
@@ -32,4 +12,3 @@ router.delete('/deleteproduct/:id', productController.deleteProduct)
 router.put('/updateproduct/:id', productController.updateProduct)
 
 module.exports = router;
->>>>>>> fce29b3f22345ace2716398a0efb58ac9a200d31
