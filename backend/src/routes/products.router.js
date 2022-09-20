@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module.exports = (app) => {
     const bodyParser = require('body-parser');
     app.use(bodyParser.urlencoded({ extended: true }))
@@ -16,3 +17,19 @@ module.exports = (app) => {
 
     app.put('/updateproduct/:id', productController.updateProduct)
 }
+=======
+let router = require('express').Router();
+const { productController } = require('../controller/index')
+
+router.get('/allproducts', productController.getProducts)
+
+router.get('/product/:id', productController.getById)
+
+router.post('/addproduct', productController.addProduct)
+
+router.delete('/deleteproduct/:id', productController.deleteProduct)
+
+router.put('/updateproduct/:id', productController.updateProduct)
+
+module.exports = router;
+>>>>>>> fce29b3f22345ace2716398a0efb58ac9a200d31
