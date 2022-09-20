@@ -8,25 +8,27 @@ import { CategoriesComponent, ListProductsComponent, NavbarComponent } from './c
 
 // Angular Material
 import { MatToolbarModule } from '@angular/material/toolbar'
-import { MatIconModule } from '@angular/material/icon'
-import { MatTableModule } from '@angular/material/table'
-import { MatPaginatorModule } from '@angular/material/paginator'
+import { ProductsComponent } from './components/products/products.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
+// Http
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    ListProductsComponent,
-    CategoriesComponent,
+    ProductsComponent,
+    ListProductsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule,
+    HttpClientModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule
