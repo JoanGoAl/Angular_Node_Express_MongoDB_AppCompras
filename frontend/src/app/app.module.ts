@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ListProductsComponent, NavbarComponent } from './components';
+import { CategoriesComponent, ListProductsComponent, NavbarComponent } from './components';
 
 // Angular Material
 import { MatToolbarModule } from '@angular/material/toolbar'
@@ -19,6 +19,7 @@ import { MatSortModule } from '@angular/material/sort';
     AppComponent,
     NavbarComponent,
     ListProductsComponent,
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,
