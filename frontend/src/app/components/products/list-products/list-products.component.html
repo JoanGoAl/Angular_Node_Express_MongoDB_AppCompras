@@ -3,24 +3,14 @@
 
     <!-- ID -->
     <ng-container matColumnDef="_id">
-<<<<<<< HEAD
       <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-=======
-      <th mat-header-cell *matHeaderCellDef  mat-sort-header> ID </th>
->>>>>>> b3386dc017dd55e34422aece469cdf6f1591caef
       <td mat-cell *matCellDef="let element"> {{ element._id }} </td>
     </ng-container>
 
     <!-- Name -->
-<<<<<<< HEAD
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-      <td mat-cell *matCellDef="let element"> {{ element.name }} </td>
-=======
     <ng-container matColumnDef="title">
-      <th mat-header-cell *matHeaderCellDef  mat-sort-header> Titulo </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Titulo </th>
       <td mat-cell *matCellDef="let element"> {{ element.title }} </td>
->>>>>>> b3386dc017dd55e34422aece469cdf6f1591caef
     </ng-container>
 
     <!-- Description -->
@@ -37,7 +27,7 @@
 
     <!-- Delete Option -->
     <ng-container matColumnDef="options">
-      <th mat-header-cell *matHeaderCellDef  mat-sort-header> Opciones </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Opciones </th>
       <td mat-cell *matCellDef="">
         <i-feather name="edit"></i-feather>
       </td>
