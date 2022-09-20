@@ -7,37 +7,37 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 
 const ELEMENT_DATA: Product[] = [
   {
-    id: "1",
+    _id: "1",
     name: "Exmaple",
     content: "Example - Description - 1",
     category: "Examples",
   },
   {
-    id: "2",
+    _id: "2",
     name: "Exmaple",
     content: "Example - Description - 2",
     category: "Examples",
   },
   {
-    id: "3",
+    _id: "3",
     name: "Exmaple",
     content: "Example - Description - 3",
     category: "Examples",
   },
   {
-    id: "4",
+    _id: "4",
     name: "Exmaple",
     content: "Example - Description - 4",
     category: "Examples",
   },
   {
-    id: "5",
+    _id: "5",
     name: "Exmaple",
     content: "Example - Description - 5",
     category: "Examples",
   },
   {
-    id: "6",
+    _id: "6",
     name: "Exmaple",
     content: "Example - Description - 6",
     category: "Examples",
@@ -50,7 +50,7 @@ const ELEMENT_DATA: Product[] = [
   styleUrls: ['./list-products.component.css'],
 })
 export class ListProductsComponent implements AfterViewInit {
-  displayedColums: String[] = ['id', 'name', 'content', 'category']
+  displayedColums: String[] = ['_id', 'name', 'content', 'category']
   dataSource = new MatTableDataSource<Product>(ELEMENT_DATA);
 
   constructor(private _liveAnnouncer: LiveAnnouncer) { }

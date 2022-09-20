@@ -2,7 +2,6 @@ const { CategoryModel } = require('../../model/index')
 
 exports.getCategories = async () => {
     return CategoryModel.find({ name: { $exists: true } }).then((docs) => {
-        console.log(docs)
         return docs
     }).catch(err => err)
 }
