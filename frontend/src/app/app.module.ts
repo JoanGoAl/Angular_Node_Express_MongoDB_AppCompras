@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CategoriesComponent, ListProductsComponent, NavbarComponent } from './components';
+import { CategoriesComponent, ListCategoriesComponent, ListProductsComponent, NavbarComponent } from './components';
 
 // Angular Material
 import { MatToolbarModule } from '@angular/material/toolbar'
@@ -21,7 +21,9 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     NavbarComponent,
     ProductsComponent,
-    ListProductsComponent
+    ListProductsComponent,
+    CategoriesComponent,
+    ListCategoriesComponent
   ],
   imports: [
     BrowserModule,
