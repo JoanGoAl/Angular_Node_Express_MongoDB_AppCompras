@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CategoriesComponent, ListCategoriesComponent, ListProductsComponent, NavbarComponent } from './components';
+import { CategoriesComponent, ListCategoriesComponent } from './components';
+import { ListProductsComponent, NavbarComponent } from './components';
 import { DetailsProductComponent } from './components/products/details-product';
 
 // Angular Material
@@ -13,11 +14,16 @@ import { ProductsComponent } from './components/products/products.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-import { MatDialogModule } from '@angular/material/dialog'
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 
 // Http
 import { HttpClientModule } from '@angular/common/http';
 import { IconsModule } from './icons';
+import { AddCategoriesComponent } from './components/categories/add-categories/add-categories.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +33,8 @@ import { IconsModule } from './icons';
     ListProductsComponent,
     DetailsProductComponent,
     ListCategoriesComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    AddCategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +46,9 @@ import { IconsModule } from './icons';
     MatPaginatorModule,
     MatSortModule,
     IconsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
