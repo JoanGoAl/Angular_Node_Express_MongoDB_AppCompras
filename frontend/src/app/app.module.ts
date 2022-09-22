@@ -18,12 +18,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 
 // Http
 import { HttpClientModule } from '@angular/common/http';
 import { IconsModule } from './icons';
-import { AddCategoriesComponent } from './components/categories/add-categories/add-categories.component';
+import { AddCategoriesComponent, AddCategoryDialog } from './components/categories/add-categories/add-categories.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AddCategoriesComponent } from './components/categories/add-categories/a
     DetailsProductComponent,
     ListCategoriesComponent,
     CategoriesComponent,
-    AddCategoriesComponent
+    AddCategoriesComponent,
+    AddCategoryDialog
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,9 @@ import { AddCategoriesComponent } from './components/categories/add-categories/a
     IconsModule,
     MatDialogModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

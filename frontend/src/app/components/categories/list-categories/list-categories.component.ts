@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, Input } from '@angular/core';
 import { Category } from 'src/app/models';
 import { CategoryService } from 'src/app/services/category.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -17,6 +17,9 @@ export class ListCategoriesComponent implements AfterViewInit {
 
   constructor(private _liveAnnouncer: LiveAnnouncer, private _categoriesService: CategoryService) { }
 
+  @Input() categories?: Category[]
+
+
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -24,13 +27,19 @@ export class ListCategoriesComponent implements AfterViewInit {
   sort!: MatSort;
 
   ngAfterViewInit(): void {
+    console.log(this.categories);
+
+    this.getCategories()
+
+  }
+
+  getCategories() {
     this._categoriesService.allCategories().subscribe((res) => {
       this.dataSource = new MatTableDataSource<Category>(res);
 
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
     })
-
   }
 
   announceSortChange(sortState: Sort) {

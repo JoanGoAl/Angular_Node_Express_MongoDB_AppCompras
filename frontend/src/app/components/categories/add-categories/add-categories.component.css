@@ -4,3 +4,13 @@
     display: flex;
     justify-content: right;
 }
+
+.container-add-category {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-modal-add-category {
+    float: right;
+    margin-top: 150px;
+}

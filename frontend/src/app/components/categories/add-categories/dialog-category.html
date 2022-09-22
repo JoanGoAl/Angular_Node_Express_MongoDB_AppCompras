@@ -1,6 +1,18 @@
 <h1>Añadir plantilla</h1>
 
-<mat-form-field appearance="fill">
-    <mat-label>Nombre plantilla</mat-label>
-    <input matInput>
-</mat-form-field>
+<div class="container-add-category">
+    <mat-form-field appearance="legacy">
+        <mat-label>Nombre de la categoria</mat-label>
+        <input [(ngModel)]="catName" matInput>
+    </mat-form-field>
+
+    <mat-form-field appearance="legacy">
+        <mat-label>Autosize textarea</mat-label>
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5" [(ngModel)]="catDescription"></textarea>
+    </mat-form-field>
+</div>
+<div class="button-modal-add-category">
+    <button mat-flat-button color="primary" (click)="getFormInfo()" style="margin-right: 15px;">Aceptar</button>
+    <button mat-flat-button color="primary">Cancelar</button>
+</div>

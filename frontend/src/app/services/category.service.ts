@@ -14,6 +14,10 @@ export class CategoryService {
     allCategories(): Observable<Category[]> {
         return this._http.get<Category[]>(`${baseUrl}/allcategories`)
     }
+
+    addOne(body: Category): Observable<Category> {
+        return this._http.post<Category>(`${baseUrl}/addcategory`, body)
+    }
 }
 
 
