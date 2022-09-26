@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetailsProductComponent, ListProductsComponent, NavbarComponent, ProductDialog } from './components';
 
 // Angular Material
+import { FormsModule } from '@angular/forms'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { ProductsComponent } from './components/products/products.component';
 import { MatTableModule } from '@angular/material/table';
@@ -14,6 +15,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog'
 import { MatFormFieldModule } from '@angular/material/form-field'
+import { TextFieldModule } from '@angular/cdk/text-field';
+import { MatInputModule } from '@angular/material/input'
 
 // Http
 import { HttpClientModule } from '@angular/common/http';
@@ -39,7 +42,10 @@ import { IconsModule } from './icons';
     MatSortModule,
     IconsModule,
     MatDialogModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule,
+    TextFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

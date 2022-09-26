@@ -42,7 +42,7 @@ export class DetailsProductComponent implements OnInit {
 @Component({
   selector: 'product-dialaog',
   templateUrl: './product-dialog.html',
-  styleUrls: []
+  styleUrls: ['./product-dialog.css']
 })
 export class ProductDialog {
   constructor(
