@@ -1,16 +1,11 @@
 // Imports
 const express = require("express");
 const mongoose = require('mongoose')
-const cors = require('cors');
 
 const app = express();
 const port = 3000;
 
-app.use(cors())
-
 app.use(require('./src/routes'))
-app.use(cors({ origin: 'http://localhost:4200' }));
-
 
 mongoose.connect('mongodb://localhost:27017/appCompras', {
     useNewUrlParser: true,

@@ -9,6 +9,7 @@ import { ListProductsComponent, NavbarComponent } from './components';
 import { DetailsProductComponent } from './components/products/details-product';
 
 // Angular Material
+import { FormsModule } from '@angular/forms'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { ProductsComponent } from './components/products/products.component';
 import { MatTableModule } from '@angular/material/table';
@@ -18,8 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
-
+import { TextFieldModule } from '@angular/cdk/text-field';
 
 // Http
 import { HttpClientModule } from '@angular/common/http';
@@ -52,7 +52,10 @@ import { AddCategoriesComponent, AddCategoryDialog } from './components/categori
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    FormsModule,
+    TextFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

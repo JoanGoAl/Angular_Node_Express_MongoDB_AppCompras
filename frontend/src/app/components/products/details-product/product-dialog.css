@@ -1,0 +1,16 @@
+.add-button-product {
+  margin-left: 10%;
+  width: 80%;
+  display: flex;
+  justify-content: right;
+}
+
+.container-add-product {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-modal-add-product {
+  float: right;
+  margin-top: 150px;
+}
