@@ -25,6 +25,7 @@ import { TextFieldModule } from '@angular/cdk/text-field';
 import { HttpClientModule } from '@angular/common/http';
 import { IconsModule } from './icons';
 import { AddCategoriesComponent, AddCategoryDialog } from './components/categories/add-categories/add-categories.component';
+import { DeleteCategoryComponent } from './components/categories/delete-category/delete-category.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AddCategoriesComponent, AddCategoryDialog } from './components/categori
     ListCategoriesComponent,
     CategoriesComponent,
     AddCategoriesComponent,
-    AddCategoryDialog
+    AddCategoryDialog,
+    DeleteCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -53,9 +55,7 @@ import { AddCategoriesComponent, AddCategoryDialog } from './components/categori
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
-    FormsModule,
-    TextFieldModule,
-    MatInputModule
+    TextFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

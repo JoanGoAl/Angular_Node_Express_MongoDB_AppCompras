@@ -58,8 +58,13 @@ export class AddCategoryDialog implements OnInit {
     this.dialogRef.close()
   }
 
-  onNoClick(): void {
+  closeModal() {
     this.dialogRef.close()
+
+  }
+
+  onNoClick(): void {
+    this.closeModal()
   }
 
   ngOnInit(): void {

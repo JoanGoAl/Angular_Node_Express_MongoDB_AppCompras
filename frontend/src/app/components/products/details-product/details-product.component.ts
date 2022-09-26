@@ -48,7 +48,7 @@ export class ProductDialog {
   constructor(
     public dialogRef: MatDialogRef<ProductDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Product
-  ) {}
+  ) { }
 
   onNoClick(): void {
     this.dialogRef.close()

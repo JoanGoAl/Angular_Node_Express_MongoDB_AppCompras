@@ -12,14 +12,12 @@ import { MatSort, Sort } from '@angular/material/sort';
   styleUrls: ['./list-categories.component.css']
 })
 export class ListCategoriesComponent implements AfterViewInit {
-  displayedColums: String[] = ['_id', 'name', 'description']
+  displayedColums: String[] = ['_id', 'name', 'description', 'options']
   dataSource = new MatTableDataSource<Category>();
 
   constructor(private _liveAnnouncer: LiveAnnouncer, private _categoriesService: CategoryService) { }
 
-  @Input() categories?: Category[]
-
-
+  categories?: Category[]
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -27,14 +25,14 @@ export class ListCategoriesComponent implements AfterViewInit {
   sort!: MatSort;
 
   ngAfterViewInit(): void {
-    console.log(this.categories);
-
     this.getCategories()
-
   }
 
   getCategories() {
     this._categoriesService.allCategories().subscribe((res) => {
+
+      this.categories = res
+
       this.dataSource = new MatTableDataSource<Category>(res);
 
       this.dataSource.paginator = this.paginator;

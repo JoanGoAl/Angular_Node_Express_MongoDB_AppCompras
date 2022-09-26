@@ -15,10 +15,11 @@ export class CategoriesComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this._categorieService.allCategories().subscribe(res => {
+    this._categorieService.allCategories().subscribe((res: Category[]) => {
       this.categories = res
     })
 
+    console.log(this.categories);
 
   }
 
