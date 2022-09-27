@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { Category } from 'src/app/models';
-import { CategoryService } from 'src/app/services/category.service';
-
+import { CategoryListService } from 'src/app/services';
 
 @Component({
   selector: 'app-add-categories',
@@ -38,13 +37,10 @@ export class AddCategoryDialog implements OnInit {
   catName?: String
   catDescription?: String
 
-  @Output() reload = new EventEmitter<Boolean>()
-
-
   constructor(
     public dialogRef: MatDialogRef<AddCategoryDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Boolean,
-    private _catgoryService: CategoryService
+    public _categoryListService: CategoryListService
   ) { }
 
   getFormInfo() {
@@ -53,11 +49,17 @@ export class AddCategoryDialog implements OnInit {
       description: this.catDescription || ''
     }
 
-    this._catgoryService.addOne(info).subscribe(e => {
-      console.log(e);
-    })
+    // this._catgoryService.addOne(info).subscribe(e => {
+    //   console.log(e);
+    // })
 
-    this.reload.emit(false)
+    this._categoryListService.addOne(info).subscribe({
+      next: res => {
+
+        this._categoryListService.categories = [...this._categoryListService.categories, res]
+      },
+      error: e => console.error(e)
+    })
 
     this.dialogRef.close()
   }

@@ -44,14 +44,14 @@ export class DeleteCategoryDialog implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DeleteCategoryDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Category | any,
-    private _catgoryListService: CategoryListService,
+    private _categoryListService: CategoryListService,
   ) { }
 
   deleteCategory() {
 
-    this._catgoryListService.deleteOne(this.data._id).subscribe(({
+    this._categoryListService.deleteOne(this.data._id).subscribe(({
       next: res => {
-        this._catgoryListService.categories = this._catgoryListService.categories.filter(p => p._id !== this.data._id);
+        this._categoryListService.categories = this._categoryListService.categories.filter(p => p._id !== this.data._id);
       },
       error: e => console.error(e)
     }))

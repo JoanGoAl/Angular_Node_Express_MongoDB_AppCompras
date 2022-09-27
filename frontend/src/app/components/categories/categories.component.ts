@@ -1,7 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Category } from 'src/app/models';
-import { CategoryService } from 'src/app/services/category.service';
-import { lastValueFrom, timeout } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-categories',
@@ -10,7 +7,7 @@ import { lastValueFrom, timeout } from 'rxjs';
 })
 export class CategoriesComponent implements OnInit {
 
-  constructor(private _categorieService: CategoryService) { }
+  constructor() { }
 
   setReload() {
     console.log('reload');

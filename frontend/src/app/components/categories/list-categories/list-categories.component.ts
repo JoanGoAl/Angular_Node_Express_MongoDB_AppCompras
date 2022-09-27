@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ViewChild, Input } from '@angular/core';
 import { Category } from 'src/app/models';
-import { CategoryListService, CategoryService } from 'src/app/services';
+import { CategoryListService } from 'src/app/services';
 import { MatTableDataSource } from '@angular/material/table';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatPaginator } from '@angular/material/paginator';
@@ -19,7 +19,6 @@ export class ListCategoriesComponent implements AfterViewInit {
     public _categoryListService: CategoryListService
   ) { }
 
-  categories?: Category[]
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -30,27 +29,28 @@ export class ListCategoriesComponent implements AfterViewInit {
     this.getCategories()
   }
 
-
-
   getCategories() {
 
-    this._categoryListService.allCategories()
+    if (this._categoryListService.categories.length == 0) {
+      this._categoryListService.allCategories().subscribe({
+        next: res => {
+          this._categoryListService.categories = res
 
-    this._categoryListService.allCategories().subscribe({
-      next: res => {
-        this.categories = res
+          this.dataSource = new MatTableDataSource<Category>(this._categoryListService.categories);
 
-        this.dataSource = new MatTableDataSource<Category>(res);
-
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-
-        this._categoryListService.categories = res
-      },
+          this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
+        },
+        error: e => console.error(e)
+      });
+    }
+    this._categoryListService.state$.subscribe({
+      next: res => this.dataSource = new MatTableDataSource<Category>(res),
       error: e => console.error(e)
     });
 
 
+    // this.categories = this._categoryListService.categories
 
     // this._categoryListService.getCategories().subscribe((res) => {
 
