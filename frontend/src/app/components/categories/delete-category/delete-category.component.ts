@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { Category } from 'src/app/models';
-import { CategoryService } from 'src/app/services/category.service';
+import { CategoryListService } from 'src/app/services';
 
 @Component({
   selector: 'app-delete-category',
@@ -12,8 +12,7 @@ export class DeleteCategoryComponent implements OnInit {
 
   constructor(private dialog: MatDialog) { }
 
-  @Input() data?: Category
-  @Input() categories?: Category[]
+  @Input() data?: Category[] | any
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
@@ -23,7 +22,7 @@ export class DeleteCategoryComponent implements OnInit {
     dialogConfig.width = '30%';
     dialogConfig.height = "30%";
 
-    dialogConfig.data = [this.data, this.categories]
+    dialogConfig.data = this.data
 
     this.dialog.open(DeleteCategoryDialog, dialogConfig);
   }
@@ -44,25 +43,20 @@ export class DeleteCategoryDialog implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<DeleteCategoryDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: Category,
-    private _catgoryService: CategoryService
+    @Inject(MAT_DIALOG_DATA) public data: Category | any,
+    private _catgoryListService: CategoryListService,
   ) { }
-
-
 
   deleteCategory() {
 
-    console.log(this.data)
-    // const info: Category = {
-    //   name: this.catName || '',
-    //   description: this.catDescription || ''
-    // }
+    this._catgoryListService.deleteOne(this.data._id).subscribe(({
+      next: res => {
+        this._catgoryListService.categories = this._catgoryListService.categories.filter(p => p._id !== this.data._id);
+      },
+      error: e => console.error(e)
+    }))
 
-    // this._catgoryService.addOne(info).subscribe(e => {
-    //   console.log(e);
-    // })
-    // console.log(info)
-    // this.dialogRef.close()
+    this.closeModal()
   }
 
   closeModal() {

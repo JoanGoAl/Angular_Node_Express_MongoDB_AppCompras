@@ -18,6 +18,10 @@ export class CategoryService {
     addOne(body: Category): Observable<Category> {
         return this._http.post<Category>(`${baseUrl}/addcategory`, body)
     }
+
+    deleteOne(id: String): Observable<String> {
+        return this._http.delete<String>(`${baseUrl}/deletecategory/${id}`)
+    }
 }
 
 

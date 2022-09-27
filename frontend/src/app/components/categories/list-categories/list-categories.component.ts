@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ViewChild, Input } from '@angular/core';
 import { Category } from 'src/app/models';
-import { CategoryService } from 'src/app/services/category.service';
+import { CategoryListService, CategoryService } from 'src/app/services';
 import { MatTableDataSource } from '@angular/material/table';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatPaginator } from '@angular/material/paginator';
@@ -15,7 +15,9 @@ export class ListCategoriesComponent implements AfterViewInit {
   displayedColums: String[] = ['_id', 'name', 'description', 'options']
   dataSource = new MatTableDataSource<Category>();
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, private _categoriesService: CategoryService) { }
+  constructor(private _liveAnnouncer: LiveAnnouncer,
+    public _categoryListService: CategoryListService
+  ) { }
 
   categories?: Category[]
   @ViewChild(MatPaginator)
@@ -28,16 +30,32 @@ export class ListCategoriesComponent implements AfterViewInit {
     this.getCategories()
   }
 
+
+
   getCategories() {
-    this._categoriesService.allCategories().subscribe((res) => {
 
-      this.categories = res
+    this._categoryListService.allCategories()
 
-      this.dataSource = new MatTableDataSource<Category>(res);
+    this._categoryListService.allCategories().subscribe({
+      next: res => {
+        this.categories = res
 
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    })
+        this.dataSource = new MatTableDataSource<Category>(res);
+
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+
+        this._categoryListService.categories = res
+      },
+      error: e => console.error(e)
+    });
+
+
+
+    // this._categoryListService.getCategories().subscribe((res) => {
+
+
+    // })
   }
 
   announceSortChange(sortState: Sort) {

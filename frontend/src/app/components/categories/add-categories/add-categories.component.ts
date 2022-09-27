@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'
 import { Category } from 'src/app/models';
 import { CategoryService } from 'src/app/services/category.service';
@@ -12,7 +12,6 @@ import { CategoryService } from 'src/app/services/category.service';
 export class AddCategoriesComponent implements OnInit {
 
   constructor(private dialog: MatDialog) { }
-
 
   openDialog() {
     const dialogConfig = new MatDialogConfig();
@@ -39,9 +38,12 @@ export class AddCategoryDialog implements OnInit {
   catName?: String
   catDescription?: String
 
+  @Output() reload = new EventEmitter<Boolean>()
+
+
   constructor(
     public dialogRef: MatDialogRef<AddCategoryDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: Category,
+    @Inject(MAT_DIALOG_DATA) public data: Boolean,
     private _catgoryService: CategoryService
   ) { }
 
@@ -54,7 +56,9 @@ export class AddCategoryDialog implements OnInit {
     this._catgoryService.addOne(info).subscribe(e => {
       console.log(e);
     })
-    console.log(info)
+
+    this.reload.emit(false)
+
     this.dialogRef.close()
   }
 

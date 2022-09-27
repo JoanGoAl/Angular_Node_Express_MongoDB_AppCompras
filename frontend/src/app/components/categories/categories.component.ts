@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Category } from 'src/app/models';
 import { CategoryService } from 'src/app/services/category.service';
+import { lastValueFrom, timeout } from 'rxjs';
 
 @Component({
   selector: 'app-categories',
@@ -9,18 +10,13 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoriesComponent implements OnInit {
 
-  categories?: Category[]
   constructor(private _categorieService: CategoryService) { }
 
+  setReload() {
+    console.log('reload');
+  }
 
   ngOnInit(): void {
-
-    this._categorieService.allCategories().subscribe((res: Category[]) => {
-      this.categories = res
-    })
-
-    console.log(this.categories);
-
   }
 
 }
